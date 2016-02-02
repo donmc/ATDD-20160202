@@ -2,6 +2,7 @@ package com.tddair;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class WhenUsingInvalidFlightData {
@@ -20,5 +21,16 @@ public class WhenUsingInvalidFlightData {
 	@Test(expected=IllegalArgumentException.class)
 	public void shouldErrorWithNoDestination() {
 		new Flight("SAT", null, 300);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldErrorWithInvalidOrigin() {
+		new Flight("SANANTONIO", null, 301);
+	}
+	
+	@Ignore
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldErrorWithInvalidDestination() {
+		fail();
 	}
 }
