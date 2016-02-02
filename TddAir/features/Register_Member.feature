@@ -5,7 +5,6 @@ so that I can receive rewards for flying frequently
 
 Scenario: Valid Registration
 
-Given --
 When a user attempts to register for the frequent flyer program with valid username and e-mail address
 Then
 	The username entered is added to the list of registered members
@@ -16,15 +15,14 @@ Then
 
 Scenario: Existing Username
 
-Given -- 
-When a user attempts to register for the frequent flyer program with a username that already exists in the list of registered members
+Given a username exists on the list of registered members
+When a user attempts to register for the frequent flyer program with that username
 Then
 	No entry is added to the list of registered members
 	An error is displayed to the user
 
 Scenario: Invalid e-mail
 
-Given --
 When a user attempts to register for the frequent flyer program with a valid username and an invalid e-mail address
 Then
 	No entry is added to the list of registered members
