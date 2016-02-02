@@ -46,5 +46,12 @@ public class Flight {
 	public int getMileage() {
 		return mileage;
 	}
+
+	public String getInformation() {
+		return getFullFlightNumber() + " | " +
+				getOrigin() + " -> " +
+				getDestination() + " | " +
+				getMileage() + " miles";
+	}
 	
 }
