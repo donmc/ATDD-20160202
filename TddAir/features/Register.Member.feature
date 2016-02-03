@@ -10,13 +10,14 @@ Feature: Register Member
     And that member has 0 ytd miles
     And that member has 10000 balance miles
 
-  Scenario: Existing username
+  Scenario: Existing username 
+    Given a customer registers with username "don" and email "don@improving.com"
     When a customer registers with duplicate username "don" and email "don@improving.com"
-    Then DuplicateUsernameException is thrown
+    Then duplicate user error message "Username already exists" is displayed
 
   Scenario Outline: Invalid Email
     When a customer registers with username <username> and email <email>
-    Then InvalidEmailException is thrown
+    Then invalid email error message "Email is Invalid!" is displayed
 
     Examples: 
       | email              | username |

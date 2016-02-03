@@ -1,12 +1,7 @@
 package com.tddair;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
-
-import cucumber.api.PendingException;
+import static org.junit.Assert.assertNotNull;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,19 +10,32 @@ public class RegisterMemberFeature {
 
 	private TddAirApplication app = new TddAirApplication();
 	private Member member;
-	@Rule
-	public ExpectedException expectedException = ExpectedException.none();
+	private String errorMessage;
 
 	@Given("^a customer registers with username \"([^\"]*)\" and email \"([^\"]*)\"$")
 	public void a_customer_registers_with_username_and_email(String username,
 			String email) throws Throwable {
-		app.registerMember(username, email);
+		try
+		{
+			app.registerMember(username, email);
+		}
+		catch(InvalidEmailException e)
+		{
+			errorMessage = e.getMessage();
+		}
 	}
 
 	@When("^a customer registers with duplicate username \"([^\"]*)\" and email \"([^\"]*)\"$")
 	public void a_customer_registers_with_duplicate_username_and_email(
 			String username, String email) throws Throwable {
-		app.registerMember(username, email);		
+		try
+		{
+			app.registerMember(username, email);
+		}
+		catch(DuplicateUsernameException e)
+		{
+			errorMessage = e.getMessage();
+		}
 	}
 
 	@Then("^a member exists with username \"([^\"]*)\"$")
@@ -38,7 +46,7 @@ public class RegisterMemberFeature {
 
 	@Then("^that member has \"([^\"]*)\" status$")
 	public void that_member_has_status(String status) throws Throwable {
-		member.getStatus().name().equals(status);
+		assertEquals(member.getStatus().name(), status);
 	}
 
 	@Then("^that member has (\\d+) ytd miles$")
@@ -51,14 +59,16 @@ public class RegisterMemberFeature {
 		assertEquals(member.getBalanceMiles(), arg1);
 	}
 
-	@Then("^DuplicateUsernameException is thrown$")
-	public void duplicateusernameexception_is_thrown() throws Throwable {
-		expectedException.expect(DuplicateUsernameException.class);
+	@Then("^duplicate user error message \"([^\"]*)\" is displayed$")
+	public void duplicate_user_error_message_is_displayed(String arg1)
+			throws Throwable {
+		assertEquals(arg1, errorMessage);
 	}
 
-	@Then("^InvalidEmailException is thrown$")
-	public void invalidemailexception_is_thrown() throws Throwable {
-		throw new InvalidEmailException();
+	@Then("^invalid email error message \"([^\"]*)\" is displayed$")
+	public void invalid_email_error_message_is_displayed(String arg1)
+			throws Throwable {
+		assertEquals(errorMessage, arg1);
 	}
 
 }

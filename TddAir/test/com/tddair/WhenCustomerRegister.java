@@ -18,7 +18,7 @@ public class WhenCustomerRegister {
 	public ExpectedException expectedException = ExpectedException.none();
 	
 	@Before	
-	public void setup() throws DuplicateUsernameException {
+	public void setup() throws DuplicateUsernameException, InvalidEmailException {
 		String username = "don";
 		String email = "don@improving.com";
 		app = new TddAirApplication();
@@ -48,7 +48,7 @@ public class WhenCustomerRegister {
 	}
 	
 	@Test
-	public void shouldNotCreateMemberWithDuplicateUsername() throws DuplicateUsernameException {
+	public void shouldNotCreateMemberWithDuplicateUsername() throws DuplicateUsernameException, InvalidEmailException {
 		expectedException.expect(DuplicateUsernameException.class);
 		app.registerMember("don", "any_email");
 	}
