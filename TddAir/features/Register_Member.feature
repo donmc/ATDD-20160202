@@ -10,6 +10,11 @@ Feature: Register Member
     And that member has 0 ytd miles
     And that member has 10000 balance miles
 
+#  Scenario: Sue Registration
+#    When a customer registers with username "sue" and email "don@improving.com"
+#    Then that member has "Gold" status
+#    And that member has 80000 balance miles
+    
   Scenario: Existing Username
   	Given a customer registers with username "bob" and email "bob@improving.com"
   	When a customer registers with username "bob" and email "bob@improving.com"
