@@ -4,11 +4,18 @@ public class Member
 {
 	private String username;
 	private String email;
+	private String status;
+	private int ytdMiles;
+	private int balanceMiles;
 	
 	public Member(String username, String email)
 	{
 		this.username = username;
 		this.email = email;
+		this.status = "Red";
+		this.ytdMiles = 0;
+		this.balanceMiles = 10000;
+		
 	}
 	
 
@@ -21,22 +28,22 @@ public class Member
 
 	public String getStatus()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		
+		return status;
 	}
 
 
 	public int getYtdMiles()
 	{
 		// TODO Auto-generated method stub
-		return 1;
+		return ytdMiles;
 	}
 
 
 	public int getBalanceMiles()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return balanceMiles;
 	}
 
 }

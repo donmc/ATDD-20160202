@@ -66,6 +66,14 @@ public class WhenCustomerRegisters {
 	@Test
 	public void shouldNotHaveDuplicateUsername()
 	{
-		fail("Not yet implemented");
+		try
+		{
+			app.registerMember("don", "mikmik@somewhere.com");
+			fail("Should throw an IllegalArgumentException");
+		}
+		catch(IllegalArgumentException e)
+		{
+			assertEquals("Invalid origin code", e.getMessage());
+		}
 	}
 }
