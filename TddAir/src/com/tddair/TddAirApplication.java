@@ -22,4 +22,17 @@ public class TddAirApplication {
 	public Member lookUpMember(String username) {
 		return members.lookup(username);
 	}
+
+	public void completeMemberFlight(Member member, String flightNumber) throws Exception {
+		if (null == member) {
+			throw new IllegalArgumentException("member cannot be null");
+		}
+		
+		Flight flight = flights.lookupFlight(flightNumber);
+		if (null == flight) {
+			throw new Exception("Flight does not exist");
+		}
+		
+		member.addMiles(flight.getMileage());
+	}
 }

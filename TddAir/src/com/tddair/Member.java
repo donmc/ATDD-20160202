@@ -35,4 +35,33 @@ public class Member {
 	public int getBalanceMiles() {
 		return balanceMiles;
 	}
+
+	public void addMiles(int miles) {
+		setYtdMiles(ytdMiles + miles);
+		setBalanceMiles(balanceMiles + miles);
+	}
+
+	private void setBalanceMiles(int miles) {
+		this.balanceMiles = miles;
+	}
+
+	public void setYtdMiles(int miles) {
+		this.ytdMiles = miles;
+
+		if (0 > ytdMiles) {
+			status = Status.Invalid;
+		}
+		else if (25000 > ytdMiles) {
+			status = Status.Red;
+		}
+		else if (50000 > ytdMiles) {
+			status = Status.Green;
+		}
+		else if (75000 > ytdMiles) {
+			status = Status.Blue;
+		}
+		else {
+			status = Status.Golden;
+		}
+	}
 }

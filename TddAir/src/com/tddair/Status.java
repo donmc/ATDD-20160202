@@ -1,5 +1,10 @@
 package com.tddair;
 
 public enum Status {
-	Red
+	Invalid,
+	Untested,
+	Red,
+	Green,
+	Blue,
+	Golden
 }
