@@ -11,29 +11,36 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 
 	private Member member;
+	private TddAirApplication app;
 	
 	@Before
 	public void setup() {
 		String username = "don";
 		String email = "don@improving.com";
 		
-		TddAirApplication app = new TddAirApplication();
-		
+		app = new TddAirApplication();
 		app.registerMember(username, email);
-		
-		member = app.LookUpMember(username);
 	}
 	
 	@Test
 	public void shouldCreateMemberWithUsername() {
+		member = app.lookUpMember("don");
 		assertNotNull(member);
 	}
 	
 	@Test
 	public void shouldHaveCorrectUsername() {
+		member = app.lookUpMember("don");
 		assertEquals("don", member.getUsername());
 	}
 	
+	@Test
+	public void shouldHaveCorrectUsernameForAdditionalMember() {
+		app.registerMember("mik", "mikmik@somewhere.com");
+		member = app.lookUpMember("mik");
+		assertEquals("mik", member.getUsername());
+	}
+
 	@Ignore
 	@Test
 	public void shouldHaveRedStatus() {

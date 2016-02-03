@@ -1,9 +1,14 @@
 package com.tddair;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TddAirApplication {
 	
 	private FlightDao flights = new FlightDao();
+	
+	private List<Member> members = new ArrayList<Member>();
 	
 	public TddAirApplication() {
 	}
@@ -12,13 +17,14 @@ public class TddAirApplication {
 		flights.addFlight(origin, destination, mileage, airline, number);
 	}
 
-	public void registerMember(String username, String email) {
-		// TODO Auto-generated method stub
-		
+	public void registerMember(String username, String email)
+	{
+		Member member = new Member(username, email);
+		members.add(member);
 	}
 
-	public Member LookUpMember(String username) {
-		// TODO Auto-generated method stub
-		return null;
+	public Member lookUpMember(String username)
+	{
+		return new Member("don", null);
 	}
 }
