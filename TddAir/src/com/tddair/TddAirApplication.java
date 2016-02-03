@@ -1,9 +1,13 @@
 package com.tddair;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class TddAirApplication {
 	
 	private FlightDao flights = new FlightDao();
+	private Map<String, Member> members = new HashMap<>();
 	
 	public TddAirApplication() {
 	} 
@@ -13,12 +17,11 @@ public class TddAirApplication {
 	}
 
 	public void registerMember(String username, String email) {
-		// TODO Auto-generated method stub
-		
+		Member member = new Member(username, email);
+		members.put(username, member);
 	}
 
 	public Member lookUpMember(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return members.get(username);
 	}
 }
