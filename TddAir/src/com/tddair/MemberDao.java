@@ -16,6 +16,10 @@ public class MemberDao {
 			throw new MemberException("username already exists");
 		}
 		
+		if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+			throw new MemberException("Invalid Email");
+		}
+		
 		Member member = new Member(username, email);
 		
 		members.put(username, member);

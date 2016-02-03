@@ -1,4 +1,6 @@
 Feature: Complete Flights
 As a member
-I want my status updated when I complete flights
-so that my status can be upgraded when applicable.
+I want my miles recorded
+so that I can accumulate miles and earn status.
+
+Scenario: Member accumulates miles and status
