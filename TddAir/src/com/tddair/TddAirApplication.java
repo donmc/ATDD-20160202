@@ -19,6 +19,11 @@ public class TddAirApplication {
 
 	public void registerMember(String username, String email)
 	{
+		if(lookUpMember(username) != null)
+		{
+			throw new IllegalArgumentException("Duplicate member!");
+		}
+
 		Member member = new Member(username, email);
 		members.add(member);
 	}

@@ -62,7 +62,6 @@ public class WhenCustomerRegisters {
 		assertEquals(10000, member.getBalanceMiles());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldNotHaveDuplicateUsername()
 	{
@@ -73,7 +72,7 @@ public class WhenCustomerRegisters {
 		}
 		catch(IllegalArgumentException e)
 		{
-			assertEquals("Invalid origin code", e.getMessage());
+			assertEquals("Duplicate member!", e.getMessage());
 		}
 	}
 }
