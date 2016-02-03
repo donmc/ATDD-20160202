@@ -12,7 +12,7 @@ public class FlightDao {
 		addFlight("LGA", "CDG", 3620, "AF", 38);
 		addFlight("LAX", "SYD", 7490, "QF", 191);
 	}
-	
+	 
 	public Flight getFlightBy(String flightNumber) {
 		return flights.get(flightNumber);
 	}

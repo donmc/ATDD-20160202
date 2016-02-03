@@ -17,12 +17,23 @@ public class TddAirApplication {
 	}
 
 	public void registerMember(String username, String email) {
-		if (members.containsKey(username)) {
-			throw new DuplicateUsernameException();
-		}
+		validate(username, email);
 		
 		Member member = new Member(username, email);
 		members.put(username, member);
+	}
+
+	private void validate(String username, String email) {
+		if (members.containsKey(username)) {
+			throw new DuplicateUsernameException(); 
+		}
+		if (emailNotValid(email)) {
+			throw new InvalidEmailException();
+		}
+	}
+
+	private boolean emailNotValid(String email) {
+		return !email.contains("@") || !email.contains(".") || email.indexOf('@') == 0;
 	}
 
 	public Member lookUpMember(String username) {

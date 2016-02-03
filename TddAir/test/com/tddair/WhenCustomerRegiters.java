@@ -67,4 +67,18 @@ public class WhenCustomerRegiters {
 	}
 	
 	
+	@Test(expected=InvalidEmailException.class)
+	public void shouldNotAllowInvalidEmail_NoAt() {
+		app.registerMember("bob", "gmail.com");
+	}
+	
+	@Test(expected=InvalidEmailException.class)
+	public void shouldNotAllowInvalidEmail_NoDot() {
+		app.registerMember("bob", "bob@gmail");
+	}
+	
+	@Test(expected=InvalidEmailException.class)
+	public void shouldNotAllowInvalidEmail_NoPrefix() {
+		app.registerMember("bob", "@gmail.com");
+	}
 }
