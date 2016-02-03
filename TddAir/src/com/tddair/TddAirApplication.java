@@ -39,4 +39,9 @@ public class TddAirApplication {
 	public Member lookUpMember(String username) {
 		return members.get(username);
 	}
+
+	public void completeFlight(String string, String string2) {
+		// TODO Auto-generated method stub
+		
+	}
 }
