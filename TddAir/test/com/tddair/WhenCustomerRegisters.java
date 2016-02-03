@@ -45,7 +45,7 @@ public class WhenCustomerRegisters {
 	public void shouldHaveRedStatus()
 	{
 		member = app.lookUpMember("don");
-		assertEquals("Red", member.getStatus());
+		assertEquals(Status.Red, member.getStatus());
 	}
 
 	@Test
