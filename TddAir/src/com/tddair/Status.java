@@ -1,6 +1,6 @@
 package com.tddair;
 
 public enum Status {
-	Red
+	Red, Green, Blue, Gold
 
 }

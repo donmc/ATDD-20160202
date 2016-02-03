@@ -27,19 +27,24 @@ public class WhenMemberCompletesFlight {
 		assertEquals(22000, member.getBalanceMiles());
 	}
 	
-	@Ignore @Test
+	@Test
 	public void shouldEarnGreenStatus() {
 		app.completeFlight("bob", "TEST25000");
 		assertEquals(Status.Green, member.getStatus());
 	}
 
-	@Ignore @Test
+	@Test
 	public void shouldEarnBlueStatus() {
-		fail("Not yet implemented");
+		app.completeFlight("bob", "TEST25000");
+		app.completeFlight("bob", "TEST25000");
+		assertEquals(Status.Blue, member.getStatus());
 	}
 	
-	@Ignore @Test
+	@Test
 	public void shouldEarnGoldStatus() {
-		fail("Not yet implemented");
+		app.completeFlight("bob", "TEST25000");
+		app.completeFlight("bob", "TEST25000");
+		app.completeFlight("bob", "TEST25000");
+		assertEquals(Status.Gold, member.getStatus());
 	}
 }

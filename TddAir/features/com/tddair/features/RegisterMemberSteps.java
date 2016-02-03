@@ -14,7 +14,7 @@ import cucumber.api.java.en.When;
 
 public class RegisterMemberSteps {
 
-	private 	TddAirApplication app = new TddAirApplication();
+	private 	TddAirApplication app = TddAirApplicationSingleton.getInstance();
 	private Member member;
 	private String errorMessage;
 	

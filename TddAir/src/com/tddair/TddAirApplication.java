@@ -40,8 +40,9 @@ public class TddAirApplication {
 		return members.get(username);
 	}
 
-	public void completeFlight(String string, String string2) {
-		// TODO Auto-generated method stub
-		
+	public void completeFlight(String username, String flightNumber) {
+		Member member = members.get(username);
+		Flight flight = flights.getFlightBy(flightNumber); 
+		member.completeFlight(flight);
 	}
 }

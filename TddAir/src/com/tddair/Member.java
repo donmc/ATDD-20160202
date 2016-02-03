@@ -35,4 +35,17 @@ public class Member {
 	public int getBalanceMiles() {
 		return balanceMiles;
 	}
+
+	public void completeFlight(Flight flight) {
+		ytdMiles += flight.getMileage();
+		balanceMiles += flight.getMileage();
+		
+		if (ytdMiles >= 75000) {
+			status = status.Gold;
+		} else if (ytdMiles >= 50000) {
+			status = Status.Blue;
+		} else if (ytdMiles >= 25000) {
+			status = Status.Green;
+		}  
+	}
 }
