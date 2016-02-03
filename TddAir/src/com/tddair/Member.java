@@ -18,4 +18,25 @@ public class Member
 		return username;
 	}
 
+
+	public String getStatus()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public int getYtdMiles()
+	{
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
+
+	public int getBalanceMiles()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

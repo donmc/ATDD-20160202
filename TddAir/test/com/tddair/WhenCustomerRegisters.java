@@ -41,28 +41,31 @@ public class WhenCustomerRegisters {
 		assertEquals("mik", member.getUsername());
 	}
 
-	@Ignore
 	@Test
-	public void shouldHaveRedStatus() {
-		fail("Not yet implemented");
+	public void shouldHaveRedStatus()
+	{
+		member = app.lookUpMember("don");
+		assertEquals("Red", member.getStatus());
 	}
 
-	@Ignore
 	@Test
-	public void shouldHave0YTDMiles() {
-		fail("Not yet implemented");
+	public void shouldHave0YTDMiles()
+	{
+		member = app.lookUpMember("don");
+		assertEquals(0, member.getYtdMiles());
+	}
+	
+	@Test
+	public void shouldHave10000BalanceMiles()
+	{
+		member = app.lookUpMember("don");
+		assertEquals(10000, member.getBalanceMiles());
 	}
 	
 	@Ignore
 	@Test
-	public void shouldHave10000BalanceMiles() {
-		fail("Not yet implemented");
-		
-	}
-	
-	@Ignore
-	@Test
-	public void shouldNotHaveDuplicateUsername() {
+	public void shouldNotHaveDuplicateUsername()
+	{
 		fail("Not yet implemented");
 	}
 }
