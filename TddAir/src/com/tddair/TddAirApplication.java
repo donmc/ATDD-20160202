@@ -25,6 +25,14 @@ public class TddAirApplication {
 
 	public Member lookUpMember(String username)
 	{
-		return new Member("don", null);
+		for (Member member : members)
+		{
+			if (member.getUsername().equalsIgnoreCase(username))
+			{
+				return member;
+			}
+		}
+		return null;
+		
 	}
 }
