@@ -17,6 +17,10 @@ public class TddAirApplication {
 	}
 
 	public void registerMember(String username, String email) {
+		if (members.containsKey(username)) {
+			throw new DuplicateUsernameException();
+		}
+		
 		Member member = new Member(username, email);
 		members.put(username, member);
 	}

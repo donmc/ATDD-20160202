@@ -45,29 +45,25 @@ public class WhenCustomerRegiters {
 		assertEquals("don@improving.com", member.getEmail());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHaveRedStatus() {
-		fail("Not yet implemented");
+		assertEquals(Status.Red, member.getStatus());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHave0YtdMiles() {
-		fail("Not yet implemented");
+		assertEquals(0, member.getYtdMiles());
 	}
 	
 	
-	@Ignore
 	@Test
 	public void shouldHave10000BalanceMiles() {
-		fail("Not yet implemented");
+		assertEquals(10000, member.getBalanceMiles());
 	}
 	
-	@Ignore
-	@Test
+	@Test(expected=DuplicateUsernameException.class)
 	public void shouldNotHaveDuplicateUsername() {
-		fail("Not yet implemented");
+		app.registerMember("don", "don@gmail.com");
 	}
 	
 	
