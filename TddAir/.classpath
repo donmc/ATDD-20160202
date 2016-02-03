@@ -12,10 +12,5 @@
 	<classpathentry kind="lib" path="lib/gherkin-2.12.2.jar"/>
 	<classpathentry kind="lib" path="lib/gherkin-jvm-deps-1.0.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/fd91495/Temp/cucumber-eclipse-plugin/cucumber-core-1.2.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/fd91495/Temp/cucumber-eclipse-plugin/cucumber-java-1.2.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/fd91495/Temp/cucumber-eclipse-plugin/cucumber-junit-1.2.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/fd91495/Temp/cucumber-eclipse-plugin/cucumber-jvm-deps-1.0.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/fd91495/Temp/cucumber-eclipse-plugin/gherkin-2.12.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

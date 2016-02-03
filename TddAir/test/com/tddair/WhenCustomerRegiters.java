@@ -9,12 +9,13 @@ import org.junit.Test;
 public class WhenCustomerRegiters {
 
 	private Member member;
+	private TddAirApplication app;
 
 	@Before
 	public void setup() {
 		String username = "don";
 		String email = "don@improving.com";
-		TddAirApplication app = new TddAirApplication();
+		app = new TddAirApplication();
 		
 		app.registerMember(username, email);
 		
@@ -28,25 +29,27 @@ public class WhenCustomerRegiters {
 	
 	@Test
 	public void shouldCorrectUsername() {
-		assertEquals("don", member.getUsername());
+		assertEquals("don", member.getUserName());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHaveRedStatus() {
-		fail("Not yet implemented");
+		assertEquals(Status.Red, member.getStatus());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void shouldHave0YtdMiles() {
-		fail("Not yet implemented");
+		assertEquals(0,member.getYtdMiles());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHave10000BalanceMiles() {
-		fail("Not yet implemented");
+		assertEquals(10000, member.getBalanceMiles());
 	}
-
+	
+	@Test(expected=DuplicateUsernameException.class)
+	public void shouldHaveDuplicateUsernameCheck() {
+		app.registerMember("don", "don@improving.com");
+	}
 }
