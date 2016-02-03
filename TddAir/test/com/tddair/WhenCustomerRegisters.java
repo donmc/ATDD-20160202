@@ -5,16 +5,17 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-public class WhenCustomerRegisters {
+public class WhenCustomerRegisters
+{
 
 	private Member member;
 	private TddAirApplication app;
 	
 	@Before
-	public void setup() {
+	public void setup()
+	{
 		String username = "don";
 		String email = "don@improving.com";
 		
@@ -23,19 +24,22 @@ public class WhenCustomerRegisters {
 	}
 	
 	@Test
-	public void shouldCreateMemberWithUsername() {
+	public void shouldCreateMemberWithUsername()
+	{
 		member = app.lookUpMember("don");
 		assertNotNull(member);
 	}
 	
 	@Test
-	public void shouldHaveCorrectUsername() {
+	public void shouldHaveCorrectUsername()
+	{
 		member = app.lookUpMember("don");
 		assertEquals("don", member.getUsername());
 	}
 	
 	@Test
-	public void shouldHaveCorrectUsernameForAdditionalMember() {
+	public void shouldHaveCorrectUsernameForAdditionalMember()
+	{
 		app.registerMember("mik", "mikmik@somewhere.com");
 		member = app.lookUpMember("mik");
 		assertEquals("mik", member.getUsername());
@@ -73,6 +77,35 @@ public class WhenCustomerRegisters {
 		catch(IllegalArgumentException e)
 		{
 			assertEquals("Duplicate member!", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void shouldNotHaveNullEmail()
+	{
+		try
+		{
+			app.registerMember("mik", null);
+			fail("Should throw an IllegalArgumentException");
+		}
+		catch(IllegalArgumentException e)
+		{
+			assertEquals("Invalid e-mail address!", e.getMessage());
+		}
+	}
+
+	
+	@Test
+	public void shouldNotHaveEmailWithoutAtSign()
+	{
+		try
+		{
+			app.registerMember("mik", "mikmiksomewhere.com");
+			fail("Should throw an IllegalArgumentException");
+		}
+		catch(IllegalArgumentException e)
+		{
+			assertEquals("Invalid e-mail address!", e.getMessage());
 		}
 	}
 }

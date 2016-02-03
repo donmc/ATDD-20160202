@@ -24,6 +24,8 @@ public class TddAirApplication {
 			throw new IllegalArgumentException("Duplicate member!");
 		}
 
+		validateEmail(email);
+		
 		Member member = new Member(username, email);
 		members.add(member);
 	}
@@ -39,5 +41,18 @@ public class TddAirApplication {
 		}
 		return null;
 		
+	}
+	
+	private void validateEmail(String email)
+	{
+		if(email == null)
+		{
+			throw new IllegalArgumentException("Invalid e-mail address!");
+		}
+		
+		if(!email.contains("@"))
+		{
+			throw new IllegalArgumentException("Invalid e-mail address!");
+		}
 	}
 }

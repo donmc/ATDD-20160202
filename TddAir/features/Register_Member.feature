@@ -1,29 +1,27 @@
 Feature: Register Member
-As an airline customer
-I want to be able to register for the frequent flyer program
-so that I can receive rewards for flying frequently
+  As an airline customer
+  I want to be able to register for the frequent flyer program
+  so that I can receive rewards for flying frequently
 
-Scenario: Valid Registration
+  Scenario: Valid Registration
+    When a user attempts to register for the frequent flyer program with username "donmc" and e-mail address "don@improving.com"
+    Then The username "donmc" is added to the list of registered members
+    	And The e-mail address "don@improving.com" is associated to the newly registered member
+    	And The newly registered member has "Red" status
+    	And The newly registered member has 0 miles flown
+    	And The newly registered member has 10000 miles redeemable for upgrades
 
-When a user attempts to register for the frequent flyer program with valid username and e-mail address
-Then
-	The username entered is added to the list of registered members
-	The e-mail address entered is associated to the username
-	The newly registered member's status is set to Red
-	The newly registered member's miles flown are set to 0
-	The newly registered member's miles redeemable for upgrades are set to 10,000
+  Scenario: Existing Username
+    Given user "donmc" exists on the list of registered members
+    When a user attempts to register for the frequent flyer program with username "donmc" and e-mail address "don@improving.com"
+    Then Error "Duplicate member!" is displayed to the user
 
-Scenario: Existing Username
+  Scenario Outline: Invalid e-mail
+    When a user attempts to register for the frequent flyer program with username "donmc" and e-mail address <invalid-email>
+    Then Error "Invalid e-mail address!" is displayed to the user
 
-Given a username exists on the list of registered members
-When a user attempts to register for the frequent flyer program with that username
-Then
-	No entry is added to the list of registered members
-	An error is displayed to the user
-
-Scenario: Invalid e-mail
-
-When a user attempts to register for the frequent flyer program with a valid username and an invalid e-mail address
-Then
-	No entry is added to the list of registered members
-	An error is displayed to the user
+Examples:
+	|invalid-email   |
+#	|"don@improving" |
+#	|"@improving.com"|
+	|"improving.com" |

@@ -21,6 +21,11 @@ public class Member
 	{
 		return username;
 	}
+	
+	public String getEmail()
+	{
+		return email;
+	}
 
 	public Status getStatus()
 	{
@@ -35,6 +40,29 @@ public class Member
 	public int getBalanceMiles()
 	{
 		return balanceMiles;
+	}
+
+	public void setYtdMiles(int ytdMiles)
+	{
+		this.ytdMiles = ytdMiles;
+	}
+
+	public void completeFlight(Flight flight)
+	{
+		ytdMiles += flight.getMileage();
+		
+		if(ytdMiles >= 75000)
+		{
+			status = Status.Golden;
+		}
+		else if(ytdMiles >= 50000)
+		{
+			status = Status.Blue;
+		}
+		else if(ytdMiles >= 25000)
+		{
+			status = Status.Green;
+		}
 	}
 
 }
