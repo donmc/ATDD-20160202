@@ -9,12 +9,13 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 
 	private Member member;
+	private TddAirApplication app;
 
 	@Before
 	public void setup() {
 		String username = "sdm";
 		String email = "sdm@sdm.com";
-		TddAirApplication app = new TddAirApplication();
+		app = new TddAirApplication();
 		
 		//execute
 		app.registerMember(username, email);
@@ -32,37 +33,41 @@ public class WhenCustomerRegisters {
 	public void shouldHaveCorrectUsername() {
 		assertEquals("sdm", member.getUsername());
 	}
+
+
+	@Test
+	public void shouldCreateTwoMembers() {
+		app.registerMember("abc","abc@abc.com");
+		Member secondMember = app.lookUpMember("abc");
+		assertEquals("abc", secondMember.getUsername());	
+	}
+	
+	@Test
+	public void shouldHaveCorrectEmail() {
+		assertEquals("sdm@sdm.com", member.getEmail());
+	}	
 	
 	
-	@Ignore
 	@Test
 	public void shouldHaveRedStatus(){
-		fail("Not yet implemented");
+		assertEquals (Status.Red, member.getStatus());
 	}
 	
-	@Ignore
+
 	@Test
 	public void shouldHave0YTDMiles(){
-		fail("Not yet implemented");
+		assertEquals(0,member.getYTDMiles());
 	}
 	
-	@Ignore
+
 	@Test
 	public void shouldHave10000BalanceMiles(){
-		fail("Not yet implemented");
+		assertEquals(10000,member.getBalanceMiles());
 	}
 	
-	@Ignore
-	@Test
+	@Test(expected=DuplicateUsernameException.class)
 	public void shouldNotHaveDuplicateUserName(){
-		fail("Not yet implemented");
+		app.registerMember("sdm","sdm@sdm.com");
 	}
-	
-	@Ignore
-	@Test
-	public void shouldNotHaveDuplicateEmail(){
-		fail("Not yet implemented");
-	}
-	
 	
 }
