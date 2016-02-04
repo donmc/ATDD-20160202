@@ -8,6 +8,7 @@ public class Member {
 	private int ytdMiles;
 	private int balanceMiles;
 	private int seatUpgradeBalance;
+	private Cas cas;
 
 	public Member(String username, String email) {
 		this.username = username;
@@ -20,7 +21,7 @@ public class Member {
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -41,15 +42,34 @@ public class Member {
 		ytdMiles += flight.getMileage();
 		balanceMiles += flight.getMileage();
 		status = Status.calculateStatusFor(ytdMiles);
-		
+
 	}
 
 	public void purchaseSeatUpgrades(int quantity) {
-		// TODO Auto-generated method stub
-		
+		int cost = status.getSeatUpgradeCostMiles() * quantity;
+
+		if (balanceMiles >= cost) {
+			seatUpgradeBalance += quantity;
+			balanceMiles -= cost;
+		}
+
 	}
 
 	public int getSeatUpgradeBalance() {
 		return seatUpgradeBalance;
+	}
+
+	public void setCas(Cas cas) {
+		this.cas = cas;
+	}
+
+	public boolean purchaseSeatUpgradesWithCC(int quantity, String ccNum) {
+		int cost = status.getSeatUpgradeCostDollars() * quantity;
+
+		boolean isValid = cas.purchase(cost, ccNum);
+		if (isValid) {
+			seatUpgradeBalance += quantity;
+		}
+		return isValid;
 	}
 }

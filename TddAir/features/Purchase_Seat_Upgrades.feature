@@ -12,13 +12,13 @@ Feature: Purchase Seat Upgrades
 
     Examples: 
       | username | start balance | quantity | end upgrades | end balance |
-      | "red1"   | 10000         | 1        | 1            | 0           |
-      | "red2"   | 30000         | 2        | 2            | 10000       |
-      | "green"  | 40000         | 1        | 1            | 31000       |
-      | "blue"   | 70000         | 1        | 1            | 62000       |
-      | "gold1"  | 100000        | 1        | 1            | 93000       |
-      | "gold2"  | 100000        | 10       | 10           | 30000       |
-      | "broke"  | 10000         | 2        | 0            | 10000       |
+      | "red1"   | 10000         | 1        | 1            | 10000       |
+      | "red2"   | 30000         | 2        | 2            | 20000       |
+      | "green"  | 40000         | 1        | 1            | 41000       |
+      | "blue"   | 70000         | 1        | 1            | 72000       |
+      | "gold1"  | 100000        | 1        | 1            | 103000      |
+      | "gold2"  | 100000        | 10       | 10           | 40000       |
+      | "broke"  | 10000         | 2        | 0            | 20000       |
 
   #Scenario: Purchase with valid Credit Card
 

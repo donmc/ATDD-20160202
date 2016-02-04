@@ -9,7 +9,7 @@ public class TddAirApplication {
 	private FlightDao flights;
 	private Map<String, Member> members = new HashMap<>();  
 	 
-	public TddAirApplication(FlightDao flightDao) {
+	public TddAirApplication(FlightDao flightDao) {   
 		flights = flightDao;
 	} 
 	
@@ -40,10 +40,15 @@ public class TddAirApplication {
 	public Member lookUpMember(String username) {
 		return members.get(username);
 	}
-
+	
 	public void completeFlight(String username, String flightNumber) {
 		Member member = members.get(username);
 		Flight flight = flights.getFlightBy(flightNumber); 
 		member.completeFlight(flight);
+	}
+
+	public void purchaseSeatUpgradesWithMilesFor(String username, int quantity) {
+		Member member = members.get(username);
+		member.purchaseSeatUpgrades(quantity);
 	}
 }
