@@ -1,9 +1,15 @@
 package com.tddair;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class TddAirApplication {
 	
 	private FlightDao flights = new FlightDao();
+	private Map<String, Member> members = new HashMap<>();
+	
+private Member member;
 	
 	public TddAirApplication() {
 	}
@@ -13,12 +19,35 @@ public class TddAirApplication {
 	}
 
 	public void registerMember(String username, String email) {
-		// TODO Auto-generated method stub
+		if (members.containsKey(username)){
+			throw new DuplicateUsernameException();
+		}
+		if (members.containsKey(username)){
+			throw new DuplicateUsernameException();
+		}if (emailNotValid(email)){
+			throw new InvalidEmailException();
+		}
+		 member = new Member(username, email);
+		 members.put(username, member);
+		
 		
 	}
 
+	private boolean emailNotValid(String email) {
+		return !email.contains("@") ||!email.endsWith(".com") ||email.startsWith("@");
+	}
+
+
+
+
 	public Member lookupMember(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return members.get(username);
+	}
+
+	public void completeFlight(String username, String flightNumber) {
+		Flight completedFlight = flights.getFlightBy(flightNumber);
+		Member member = members.get(username);
+		member.completeFlight(completedFlight);
+		
 	}
 }

@@ -9,12 +9,15 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 
 	private Member member;
-
+	private TddAirApplication app;
+	
 	@Before
 	public void setup(){
 		String username = "don";
 		String email = "don@improving.com";
-		TddAirApplication app = new TddAirApplication();
+		Integer ytdMiles = 0;
+		Integer balanceMiles = 10000;
+		app = new TddAirApplication();
 		
 		app.registerMember(username, email);
 		
@@ -27,34 +30,65 @@ public class WhenCustomerRegisters {
 		assertNotNull(member);
 	}
 	
+	
 	@Test
 	public void shouldHaveCorrectUsername() {
 
 		assertEquals("don", member.getUsername());
 	}
 	
-	@Ignore
+	
+	@Test
+	public void shouldCreateTwoMembers() {
+		app.registerMember("bob", "bob@improving.com");
+		Member secondMember = app.lookupMember("bob");
+		assertEquals("bob", secondMember.getUsername());
+	}
+	
+	@Test
+	public void shouldHaveCorrectEmail() {
+
+		assertEquals("don@improving.com", member.getEmail());
+	}
+	
+	
+	
 	@Test
 	public void shouldHaveRedStatus(){
-		fail("Not yet implemented");
+		assertEquals(Status.Red, member.getStatus());
 	}
 	
-	@Ignore
+
 	@Test
 	public void shouldHave0YtdMiless(){
-		fail("Not yet implemented");
+		assertEquals(0, member.getYtdMiles());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void shouldHave10000BalanceMiles(){
-		fail("Not yet implemented");
+		assertEquals(10000, member.getBalanceMiles());
 	}
 	
-	@Ignore
-	@Test
+
+	@Test(expected=DuplicateUsernameException.class)
 	public void shouldNotHaveDuplicateUsername(){
-		fail("Not yet implemented");
+		app.registerMember("don", "don@gmail.com");
+	}
+	
+	@Test(expected=InvalidEmailException.class)
+	public void shouldNotAllowInvalidEmail_NoAt(){
+		app.registerMember("dog", "doggmail.com");
+	}
+	
+	@Test(expected=InvalidEmailException.class)
+	public void shouldNotAllowInvalidEmail_NoDot(){
+		app.registerMember("dan", "dan@gmailcom");
+	}
+	
+	@Test(expected=InvalidEmailException.class)
+	public void shouldNotAllowInvalidEmail_NoPrefix(){
+		app.registerMember("din", "d@gmail.com");
 	}
 
 }

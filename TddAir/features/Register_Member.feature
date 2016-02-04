@@ -16,6 +16,13 @@ Feature: Register Member
   Then an error message "Duplicate Username!" is returned
   
 
-  Scenario: Invalid Email
+  Scenario Outline: Invalid Email
  When a customer registers with username <username> and email <email>
  Then an error message "Invalid Email!" is returned
+ 
+  Examples: 
+   	|email             |username| 
+   	|"bobimproving.com"|"bob"   | 
+   	|"bob@improving"   |"don"   | 
+  	|"@improving.com"  |"rod"   | 
+ 
