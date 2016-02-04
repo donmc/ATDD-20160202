@@ -1,9 +1,8 @@
 package com.tddair;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class WhenMemberCompletesFlight {
@@ -13,7 +12,7 @@ public class WhenMemberCompletesFlight {
 	
 	@Before
 	public void setup() {
-		app = new TddAirApplication();
+		app = new TddAirApplication(new FakeFlightDao());
 		app.registerMember("bob", "bob@improving.com");
 		member = app.lookUpMember("bob");
 		app.addFlight("DFW", "DFW", 25000, "TEST", 25000);

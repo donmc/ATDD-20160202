@@ -3,6 +3,9 @@ As a Member
 I want my miles recorded
 so that I can accumulate miles and earn status
 
+Background: Cleanup
+Given a clean system
+
 Scenario Outline: Member accumulates miles and status
 
 Given a customer registers with username <username> and email "bob@improving.com"
@@ -15,7 +18,7 @@ And that member has <end balance> balance miles
 Examples: 
 |username|start miles|flight no|end status|end ytd|end balance|
 |"bob"   |20000      |"QF191"  |"Green"   |27490  |37490      |
-|"sue"   |45000      |"QF191"  |"Blue"    |52490  |62490      |
-|"rob"   |20000      |"QF191"  |"Green"   |27490  |37490      |
-|"cob"   |20000      |"QF191"  |"Green"   |27490  |37490      |
-|"dob"   |20000      |"QF191"  |"Green"   |27490  |37490      |
+|"bob"   |45000      |"QF191"  |"Blue"    |52490  |62490      |
+|"bob"   |70000      |"QF191"  |"Gold"    |77490  |87490      |
+|"bob"   |15000      |"QF191"  |"Red"     |22490  |32490      |
+|"bob"   |40000      |"QF191"  |"Green"   |47490  |57490      |

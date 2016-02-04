@@ -1,15 +1,16 @@
 package com.tddair;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Map; 
 
 
 public class TddAirApplication {
 	
-	private FlightDao flights = new FlightDao();
-	private Map<String, Member> members = new HashMap<>();
-	
-	public TddAirApplication() {
+	private FlightDao flights;
+	private Map<String, Member> members = new HashMap<>();  
+	 
+	public TddAirApplication(FlightDao flightDao) {
+		flights = flightDao;
 	} 
 	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {

@@ -26,6 +26,6 @@ Feature: Register Member
   
   Examples:
   	|email             |username|
-  	|"bobimproving.com"|"bob"   |
+  	|"bobimproving.com"|"cob"   |
   	|"bob@improving"   |"don"   |
   	|"@improving.com"  |"rod"   |
