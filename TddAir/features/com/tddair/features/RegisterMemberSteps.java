@@ -1,6 +1,6 @@
 package com.tddair.features;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import com.tddair.Member;
 import com.tddair.TddAirApplication;
@@ -13,7 +13,6 @@ public class RegisterMemberSteps
 {
 	private TddAirApplication app = TddAirApplicationSingleton.getInstance();
 	private Member member;
-	private String message;
 	
 	@When("^a user attempts to register for the frequent flyer program with username \"([^\"]*)\" and e-mail address \"([^\"]*)\"$")
 	public void a_user_attempts_to_register_for_the_frequent_flyer_program_with_username_and_e_mail_address(String username, String email) throws Throwable
@@ -24,7 +23,7 @@ public class RegisterMemberSteps
 		}
 		catch(IllegalArgumentException e)
 		{
-			message = e.getMessage();
+			
 		}
 	}
 
@@ -68,13 +67,13 @@ public class RegisterMemberSteps
 		}
 		catch(IllegalArgumentException e)
 		{
-			message = e.getMessage();
+			
 		}
 	}
 
 	@Then("^Error \"([^\"]*)\" is displayed to the user$")
 	public void error_is_displayed_to_the_user(String message) throws Throwable
 	{
-	    assertEquals(message, this.message);
+	    assertEquals(message, app.getErrorMessage());
 	}
 }

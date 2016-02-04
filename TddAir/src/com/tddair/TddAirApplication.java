@@ -7,6 +7,7 @@ import java.util.List;
 public class TddAirApplication {
 	
 	private FlightDao flights;
+	private String errorMessage;
 	
 	private List<Member> members = new ArrayList<Member>();
 	
@@ -28,7 +29,8 @@ public class TddAirApplication {
 	{
 		if(lookUpMember(username) != null)
 		{
-			throw new IllegalArgumentException("Duplicate member!");
+			errorMessage = "Duplicate member!";
+			throw new IllegalArgumentException(errorMessage);
 		}
 
 		validateEmail(email);
@@ -54,12 +56,33 @@ public class TddAirApplication {
 	{
 		if(email == null)
 		{
-			throw new IllegalArgumentException("Invalid e-mail address!");
+			errorMessage = "Invalid e-mail address!";
+			throw new IllegalArgumentException(errorMessage);
 		}
 		
 		if(!email.contains("@"))
 		{
-			throw new IllegalArgumentException("Invalid e-mail address!");
+			errorMessage = "Invalid e-mail address!";
+			throw new IllegalArgumentException(errorMessage);
+		}
+	}
+	
+	public String getErrorMessage()
+	{
+		return errorMessage;
+	}
+	
+	public void purchaseUpgradesWithMiles(String username, int qty)
+	{
+		Member member = lookUpMember(username);
+		try
+		{
+			member.purchaseUpgradesWithMiles(qty);
+		}
+		catch(InsufficientMilesException e)
+		{
+			errorMessage = "Not enough miles!";
+			throw e;
 		}
 	}
 }

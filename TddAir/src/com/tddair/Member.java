@@ -7,6 +7,7 @@ public class Member
 	private Status status;
 	private int ytdMiles;
 	private int balanceMiles;
+	private int seatUpgrades;
 	
 	public Member(String username, String email)
 	{
@@ -15,6 +16,7 @@ public class Member
 		this.status = Status.Red;
 		this.ytdMiles = 0;
 		this.balanceMiles = 10000;
+		this.seatUpgrades = 0;
 	}
 
 	public String getUsername()
@@ -50,6 +52,7 @@ public class Member
 	public void completeFlight(Flight flight)
 	{
 		ytdMiles += flight.getMileage();
+		balanceMiles += flight.getMileage();
 		
 		if(ytdMiles >= 75000)
 		{
@@ -65,4 +68,39 @@ public class Member
 		}
 	}
 
+	public void setBalanceMiles(int balanceMiles)
+	{
+		this.balanceMiles = balanceMiles;
+		
+	}
+
+	public void setStatus(Status status)
+	{
+		this.status = status;
+	}
+
+	public void setSeatUpgrades(int seatUpgrades)
+	{
+		this.seatUpgrades = seatUpgrades;
+	}
+
+	public void purchaseUpgradesWithMiles(int qty)
+	{
+		int costOfUpgrades = qty * status.getUpgradeCostMiles();
+		
+		if(balanceMiles < costOfUpgrades)
+		{
+			throw new InsufficientMilesException();
+		}
+		
+		balanceMiles -= costOfUpgrades;
+		seatUpgrades += qty;
+	}
+
+	public int getSeatUpgrades()
+	{
+		return seatUpgrades;
+	}
+
+	
 }

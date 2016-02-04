@@ -20,6 +20,7 @@ public class WhenMemberCompletesFlight
 		app.registerMember(username, email);
 		member = app.lookUpMember("don");
 		member.setYtdMiles(10000);
+		member.setBalanceMiles(5000);
 	}
 
 	@Test
@@ -30,6 +31,7 @@ public class WhenMemberCompletesFlight
 		member.completeFlight(flight);
 		
 		assertEquals(13000, member.getYtdMiles());
+		assertEquals(8000, member.getBalanceMiles());
 	}
 
 	@Test

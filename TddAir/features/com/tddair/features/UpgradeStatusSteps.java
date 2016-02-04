@@ -1,6 +1,6 @@
 package com.tddair.features;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import com.tddair.Flight;
 import com.tddair.Member;
@@ -39,5 +39,18 @@ public class UpgradeStatusSteps
 	public void user_has_status(String status) throws Throwable
 	{
 	    assertEquals(status, member.getStatus().toString());
+	}
+	
+	@Given("^user \"([^\"]*)\" has (\\d+) miles redeemable for upgrades$")
+	public void user_has_miles_redeemable_for_upgrades(String username, int redeemableMiles) throws Throwable
+	{
+		member = app.lookUpMember(username);
+	    member.setBalanceMiles(redeemableMiles);
+	}
+
+	@Then("^user now has (\\d+) miles redeemable for upgrades$")
+	public void user_now_has_miles_redeemable_for_upgrades(int redeemableMiles) throws Throwable
+	{
+	    assertEquals(redeemableMiles, member.getBalanceMiles());
 	}
 }
