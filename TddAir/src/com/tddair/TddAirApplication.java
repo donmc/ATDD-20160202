@@ -6,11 +6,13 @@ import java.util.List;
 
 public class TddAirApplication {
 	
-	private FlightDao flights = new FlightDao();
+	private FlightDao flights;
 	
 	private List<Member> members = new ArrayList<Member>();
 	
-	public TddAirApplication() {
+	public TddAirApplication(FlightDao flightDao)
+	{
+		flights = flightDao;
 	}
 	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {

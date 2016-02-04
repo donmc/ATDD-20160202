@@ -16,7 +16,7 @@ public class WhenMemberCompletesFlight
 		String username = "don";
 		String email = "don@improving.com";
 		
-		app = new TddAirApplication();
+		app = new TddAirApplication(new FakeFlightDao());
 		app.registerMember(username, email);
 		member = app.lookUpMember("don");
 		member.setYtdMiles(10000);

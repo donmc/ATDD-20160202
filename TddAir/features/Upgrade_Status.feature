@@ -3,6 +3,9 @@ As a frequent flyer program member
 I want my status to be upgraded upon completing a flight
 So that I can receive greater rewards
 
+Background: Cleanup
+	Given a clean system
+
 Scenario: Red to Green
 	Given user "donmc" exists on the list of registered members
 		And user "donmc" has 19000 miles flown

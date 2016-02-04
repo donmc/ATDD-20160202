@@ -3,6 +3,9 @@ Feature: Register Member
   I want to be able to register for the frequent flyer program
   so that I can receive rewards for flying frequently
 
+Background: Cleanup
+	Given a clean system
+
   Scenario: Valid Registration
     When a user attempts to register for the frequent flyer program with username "donmc" and e-mail address "don@improving.com"
     Then The username "donmc" is added to the list of registered members
