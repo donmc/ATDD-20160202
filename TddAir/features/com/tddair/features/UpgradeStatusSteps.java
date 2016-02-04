@@ -2,10 +2,10 @@ package com.tddair.features;
 
 import static junit.framework.Assert.assertEquals;
 
+import com.tddair.Flight;
 import com.tddair.Member;
 import com.tddair.TddAirApplication;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -25,8 +25,8 @@ public class UpgradeStatusSteps
 	@When("^user completes flight \"([^\"]*)\"$")
 	public void user_completes_flight(String flightNumber) throws Throwable
 	{
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    Flight flight = app.getFlightByFlightNumber(flightNumber);
+	    member.completeFlight(flight);
 	}
 	
 	@Then("^user now has (\\d+) miles flown$")
