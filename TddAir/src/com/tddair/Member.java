@@ -7,6 +7,7 @@ public class Member {
 	private Status status;
 	private int ytdMiles;
 	private int balanceMiles;
+	private int seatUpgradeBalance;
 
 	public Member(String username, String email) {
 		this.username = username;
@@ -41,5 +42,14 @@ public class Member {
 		balanceMiles += flight.getMileage();
 		status = Status.calculateStatusFor(ytdMiles);
 		
+	}
+
+	public void purchaseSeatUpgrades(int quantity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getSeatUpgradeBalance() {
+		return seatUpgradeBalance;
 	}
 }
