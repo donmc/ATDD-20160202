@@ -8,6 +8,7 @@ public class Member
 	private int ytdMiles;
 	private int balanceMiles;
 	private int seatUpgrades;
+	private Cas cas;
 	
 	public Member(String username, String email)
 	{
@@ -100,6 +101,22 @@ public class Member
 	public int getSeatUpgrades()
 	{
 		return seatUpgrades;
+	}
+
+	public void purchaseUpgradesWithCC(int qty, String ccNum)
+	{
+		cas.purchase(ccNum, status.getUpgradeCostDollars() * qty);
+		seatUpgrades += qty;
+	}
+
+	public void setCas(Cas cas)
+	{
+		this.cas = cas;
+	}
+
+	public Cas getCas()
+	{
+		return cas;
 	}
 
 	
