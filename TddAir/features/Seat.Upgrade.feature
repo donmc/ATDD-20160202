@@ -5,7 +5,7 @@ so that I can travel in a more comfortable way
 
 Scenario Outline: Purchase with Miles (Red, Green, Blue, Gold)
 Given a customer registers with username <username> and email "don@improving.com"
-    And member <member> has <start miles> miles
+    And member <member> has <start balance> miles
     When member purchases <quantity> seat upgrade
     Then member has <upgrades> upgrades
     And that member has <end balance> balance miles
