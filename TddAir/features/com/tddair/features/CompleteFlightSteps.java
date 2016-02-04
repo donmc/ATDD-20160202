@@ -30,7 +30,7 @@ public class CompleteFlightSteps {
 	
 	@When("^member takes flight \"([^\"]*)\"$")
 	public void member_takes_flight(String flight) throws Throwable {
-		app.completeMemberFlight(member, flight);
+		app.completeMemberFlight(member.getUsername(), flight);
 	}
 
 	@Then("^that member has (\\d+) ytd miles$")

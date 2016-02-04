@@ -23,12 +23,13 @@ public class TddAirApplication {
 		return members.lookup(username);
 	}
 
-	public void completeMemberFlight(Member member, String flightNumber) throws Exception {
+	public void completeMemberFlight(String username, String flightNumber) throws Exception {
+		Member member = lookUpMember(username);
 		if (null == member) {
 			throw new IllegalArgumentException("member cannot be null");
 		}
 		
-		Flight flight = flights.lookupFlight(flightNumber);
+		Flight flight = flights.getFlightBy(flightNumber);
 		if (null == flight) {
 			throw new Exception("Flight does not exist");
 		}

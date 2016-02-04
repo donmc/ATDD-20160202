@@ -21,8 +21,4 @@ public class FlightDao {
 		Flight flight = new Flight(origin, destination, mileage, airline, number);
 		flights.put(flight.getFullFlightNumber(), flight);
 	}
-
-	public Flight lookupFlight(String flightNumber) {
-		return flights.get(flightNumber);
-	}
 }
