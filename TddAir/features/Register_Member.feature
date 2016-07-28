@@ -9,11 +9,6 @@ Feature: Register Member
     And that member has "Red" status
     And that member has 0 ytd miles
     And that member has 10000 balance miles
-
-#  Scenario: Sue Registration
-#    When a customer registers with username "sue" and email "don@improving.com"
-#    Then that member has "Gold" status
-#    And that member has 80000 balance miles
     
   Scenario: Existing Username
   	Given a customer registers with username "bob" and email "bob@improving.com"
@@ -22,10 +17,11 @@ Feature: Register Member
 
   Scenario Outline: Invalid Email
   	When a customer registers with username <username> and email <email>
-  	Then an error message "Invalid Email!" is returned
+  	Then an error message "Invalid Email. Please try again." is returned
   
   Examples:
   	|email             |username|
   	|"bobimproving.com"|"cob"   |
   	|"bob@improving"   |"don"   |
   	|"@improving.com"  |"rod"   |
+  	|"$%$%@improving.com"  |"tod"   |
